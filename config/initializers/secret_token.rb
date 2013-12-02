@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Midnight::Application.config.secret_key_base = '3f71a2def57af184ec9634f90d0be3c9f304eda2879f25ab244add938cc91d3fc2e5ed221146726fa8a018432db8510c5c7d046e7bde5a297d67bd08aaa0122b'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Midnight::Application.config.secret_key_base = secure_token
