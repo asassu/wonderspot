@@ -28,4 +28,14 @@ describe "Static pages" do
       expect(page).to have_title("Midnight - About")
     end
   end
+
+  it "should have the right links on the layout" do
+    visit root_path
+    click_link "About"
+    expect(page).to have_title("Midnight - About")
+    click_link "Home"
+    expect(page).to have_title("Midnight - Home")
+    click_link "Register"
+    expect(page).to have_title("Midnight - Register")
+  end
 end
