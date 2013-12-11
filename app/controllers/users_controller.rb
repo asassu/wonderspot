@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "The clock strikes Midnight for you, too?"
+      sign_in @user
       redirect_to @user
     else
       render 'new'

@@ -1,10 +1,13 @@
 <% provide(:title, 'Home') %>
 
-<div class="center hero-unit">
-    <h1>Midnight</h1>
-    <p>
-      Social networking for the night owl.
-    </p>
-  <%= link_to "Register", register_path, class: "btn btn-large btn-primary" %>
-</div>
-
+<% if self.current_user.nil? %>
+	<div class="center hero-unit">
+	    <h1>Midnight</h1>
+	    <p>
+	      Social networking for the night owl.
+	    </p>
+	  <%= link_to "Register", register_path, class: "btn btn-large btn-primary" %>
+	</div>
+<% else %>
+    <p> PUT SHIT HERE </p>
+<% end %>
