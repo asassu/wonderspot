@@ -1,5 +1,6 @@
 Midnight::Application.routes.draw do
   resources :users
+  resources :friend
   resources :sessions, only: [:new, :create, :destroy]
   root  'static_pages#home'
   match '/register',  to: 'users#new',          via: 'get'

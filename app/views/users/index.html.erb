@@ -23,6 +23,19 @@
         <td><%= user.interests %></td>
         <td><%= user.quotes %></td>
         <td><%= link_to 'Show', user %></td>
+        <% if user != self.current_user %>
+          <% if @friends.include?([user.id, true].to_s) ||
+                @friends.include?([self.current_user.id, true].to_s) %>
+            <td><%= link_to "Friend", "/users/#{user.id}" %></td>
+          <% else %>
+            <% if @friends.include?([user.id, false].to_s) ||
+                  @friends.include?([self.current_user.id, false].to_s) %>
+              <td><%= link_to "~Friend~", "/friend/#{user.id}" %></td>
+            <% else %>
+              <td><%= link_to "Friend?", "/friend/#{user.id}" %></td>
+            <% end %>
+          <% end %>
+        <% end %>
         <% if self.current_user == user %>
           <td><%= link_to 'Edit', edit_user_path(user) %></td>
           <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
