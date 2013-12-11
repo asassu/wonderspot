@@ -13,6 +13,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = self.current_user
+  end
+
+  def update
+    @user = self.current_user
+    if @user.update_attributes(user_params)
+      flash[:notice] = "Information Updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   def create
@@ -30,6 +41,8 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation,
+                                   :description, :interests,
+                                   :quotes)
     end
 end

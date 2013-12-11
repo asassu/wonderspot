@@ -14,7 +14,12 @@ class MicropostsController < ApplicationController
 
   # GET /microposts/new
   def new
-    @micropost = Micropost.new
+    if self.current_user.nil?
+      redirect_to root_url
+    else
+      @micropost = Micropost.new
+      @user = self.current_user
+    end
   end
 
   # GET /microposts/1/edit
@@ -24,7 +29,8 @@ class MicropostsController < ApplicationController
   # POST /microposts
   # POST /microposts.json
   def create
-    @micropost = Micropost.new(micropost_params)
+    @micropost = Micropost.new(micropost_params.merge(:user_id => self.current_user.id,
+                                                      :username => self.current_user.name))
 
     respond_to do |format|
       if @micropost.save
