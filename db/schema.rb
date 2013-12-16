@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211040559) do
+# 
+
+ActiveRecord::Schema.define(version: 20131216013856) do
 
   create_table "friendships", force: true do |t|
     t.integer  "user"
@@ -30,6 +32,7 @@ ActiveRecord::Schema.define(version: 20131211040559) do
   end
 
   create_table "users", force: true do |t|
+    #t.integer  "id" 
     t.string   "name"
     t.string   "email"
     t.datetime "created_at"
