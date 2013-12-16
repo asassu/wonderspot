@@ -20,6 +20,8 @@ class UsersController < ApplicationController
   end
 
   def show
+   # @id = url.match(/.*\=(\d+)/)[1]
+   # @user = User.(@id)
     @user = User.find(params[:id])
     @friends = get_friends()
   end
