@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 
-  def get_friends
-    @user = self.current_user
+  def get_friends(user)
+    if user.nil?
+        @user = self.current_user
+    else
+        @user = user
+    end
+
     friends = Array.new
     Friendships.find(:all, :conditions => { :user=>@user.id }).each do |f|
       friend = [User.find(f.friend).id, f.accepted].to_s
@@ -16,12 +21,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @friends = get_friends()
+    @friends = get_friends(@user)
   end
 
   def show
     @user = User.find(params[:id])
-    @friends = get_friends()
+    @friends = get_friends(@user)
   end
 
   def new
