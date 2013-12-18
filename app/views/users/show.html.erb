@@ -20,4 +20,8 @@
     <p><strong>Quotes:</strong><br>
        <%= @user.quotes %>
     </p>
+    <h3>Posts</h3>
+    <% @posts.each do |p| %>
+        <p><%= p.created_at %> -- <%= p.content %></p>
+    <% end %>
 </div>
