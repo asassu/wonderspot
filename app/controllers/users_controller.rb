@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @friends = get_friends(@user)
+    @posts = Micropost.where(username: @user.name).reverse
   end
 
   def new
