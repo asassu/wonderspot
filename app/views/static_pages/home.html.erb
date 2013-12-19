@@ -17,5 +17,12 @@
 	    </p>
 	    <hr>
 
+		    <h3>Posts</h3>
+		    <% @microposts.each do |p| %>
+			<p class="microposts"><span class="time"><%= p.created_at %></span> -- <span class="time"><a href="users/<%= p.user_id %>"><%= p.username %></a></span>
+                        <br>
+                        <span class="micro_content"><%= p.content %></span></p>
+		    <% end %>
+
 	</div>
 <% end %>

@@ -4,7 +4,9 @@ class MicropostsController < ApplicationController
   # GET /microposts
   # GET /microposts.json
   def index
+    @user = self.current_user
     @microposts = Micropost.all
+    @posts = Micropost.where(username: @user.name).reverse
   end
 
   # GET /microposts/1
@@ -19,6 +21,7 @@ class MicropostsController < ApplicationController
     else
       @micropost = Micropost.new
       @user = self.current_user
+      redirect_to root_url
     end
   end
 

@@ -149,6 +149,44 @@ aside {
   margin-right: 10px;
 }
 
+.microposts{
+  background-color: #ddd;
+  padding: 15px;
+  margin: 15px;
+}
+
+.time{
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.2em;
+}
+
+.micro_content{
+  font-size: 1.5em;
+}
+
+.users{
+  padding: 10px;
+  maring: 10px;
+  thead{
+    font-size: 1.5em;
+    background-color: #ccc;
+    padding: 10px;
+    margin: 10px;
+  }
+  tr, td{
+    padding: 10px;
+  }
+}
+
+.delete{
+  background-color: #FFE0E0;
+  padding: 20px;
+  border: 2px solid red;
+  a{
+    color: black;
+  }
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {

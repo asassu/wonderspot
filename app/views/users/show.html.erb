@@ -22,6 +22,6 @@
     </p>
     <h3>Posts</h3>
     <% @posts.each do |p| %>
-        <p><%= p.created_at %> -- <%= p.content %></p>
+        <p class="microposts"><%= p.created_at %> -- <%= p.content %></p>
     <% end %>
 </div>
